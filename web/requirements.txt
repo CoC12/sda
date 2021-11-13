@@ -6,3 +6,6 @@ uwsgi==2.0.18
 
 # DB Client
 mysqlclient==2.0.3
+
+# SSO client
+django-cas-ng==4.2.1

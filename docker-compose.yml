@@ -41,6 +41,8 @@ services:
       - ./src/static:/static
     environment:
       - ENV=local
+    env_file:
+      - .env
     expose:
       - "8001"
     depends_on:
