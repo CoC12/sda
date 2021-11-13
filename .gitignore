@@ -1,0 +1,5 @@
+nginx/conf/default.conf
+src/static/admin
+src/db.sqlite3
+*.pyc
+.env

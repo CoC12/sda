@@ -1,0 +1,8 @@
+Django==3.2.3
+psycopg2==2.8.6
+
+# nginx
+uwsgi==2.0.18
+
+# DB Client
+mysqlclient==2.0.3
