@@ -1,6 +1,80 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block page_title %}ダッシュボード | SDA{% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'analytics/js/dashboard.js' %}"></script>
+{% endblock %}
+
 {% block contents %}
+<div class="m-4 card">
+    <div class="card-body">
+        <div class="card-title">
+            グラフ
+        </div>
+        <div class="js-dashboard__graph">
+        </div>
+    </div>
+</div>
+<div class="m-4 card">
+    <div class="card-body">
+        <div class="card-title">
+            メトリクス選択
+        </div>
+        <div>
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th class="col-1">
+                        </th>
+                        <th class="col-3">
+                            メトリクス名
+                        </th>
+                        <th class="col-2">
+                            コード
+                        </th>
+                        <th class="col-1">
+                            データ数
+                        </th>
+                        <th class="col-5">
+                            説明
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for metrics in object_list %}
+                    <tr class="js-dashboard__metrics-row">
+                        <td class="col-1">
+                            <input
+                                type="checkbox"
+                                class="form-check-input js-base__stop-click-propagation"
+                                id="metrics-{{ metrics.pk }}"
+                                value="{{ metrics.pk }}"
+                            >
+                        </td>
+                        <td class="col-3">
+                            {{ metrics.title }}
+                        </td>
+                        <td class="col-2">
+                            {{ metrics.code }}
+                        </td>
+                        <td class="col-1">
+                            {{ metrics.streamdata_set.count }}
+                        </td>
+                        <td class="col-5">
+                            {{ metrics.description|default:'' }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% if not object_list %}
+            <div class="text-center">
+                表示するメトリクスがありません。
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
