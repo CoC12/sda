@@ -49,7 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_cas_ng.middleware.CASMiddleware'
+    'middleware.login_required_middleware.LoginRequiredMMiddleware',
+    'django_cas_ng.middleware.CASMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -105,7 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 LANGUAGE_CODE = 'ja-JP'
 TIME_ZONE = 'Asia/Tokyo'
 
@@ -118,6 +118,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATIC_URL = '/static/'
 
@@ -133,3 +134,8 @@ AUTHENTICATION_BACKENDS = (
 )
 CAS_SERVER_URL = os.environ.get('CAS_SERVER_URL')
 CAS_VERSION = os.environ.get('CAS_VERSION')
+
+# Login Required
+LOGIN_REQUIRED_IGNORE_VIEWS = [
+    'cas_ng_login',
+]
