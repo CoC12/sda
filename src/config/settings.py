@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_cas_ng',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'api_v1',
     'analytics',
 ]
 
@@ -138,4 +141,12 @@ CAS_VERSION = os.environ.get('CAS_VERSION')
 # Login Required
 LOGIN_REQUIRED_IGNORE_VIEWS = [
     'cas_ng_login',
+    'register_stream_data',
 ]
+
+# rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+}
