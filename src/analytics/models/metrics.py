@@ -10,6 +10,7 @@ class Metrics(models.Model):
     code = models.CharField(
         verbose_name='コード',
         max_length=128,
+        unique=True,
     )
     description = models.TextField(
         verbose_name='説明',
