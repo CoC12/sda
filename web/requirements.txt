@@ -9,3 +9,6 @@ mysqlclient==2.0.3
 
 # SSO client
 django-cas-ng==4.2.1
+
+# rest-framework
+djangorestframework==3.12.4
